@@ -1,0 +1,86 @@
+<div class="main-content">
+<div class="form-left">
+	<h1 align="center">Search a Movie Title Below</h1>
+
+	<form #form="ngForm" class="form-inline" align="center" (ngSubmit)="onSubmit(form.value,form.valid)">
+	    <select name="search"
+	            ngModel
+	            #search='ngModel' (change)="onSelectSearch(search.value)">
+	  <option value="" disabled="">Search by</option>
+	  <option value="title">Title</option>
+	  <option value="id">Id</option>
+	  <option value="keyword">Keyword</option>
+	</select>
+	<div *ngIf="title">
+		<div class=form-grp>
+			<label>Title:</label>
+			<input type="text" name="title" ngModel required #title='ngModel'>
+			<span *ngIf="(title.touched && !title.valid) || form.submitted" style="color: red;">Please Enter title</span>
+		</div>
+		<div class=form-grp>
+			<label>Year:</label>
+			<input type="text" name="year" ngModel #year='ngModel'>
+		</div>
+		<div class=form-grp>
+			<label>Plot:</label>
+			<select name="plot"
+			            ngModel
+			            #plot='ngModel'>
+			  <option value="" disabled="">select..</option>
+			  <option value="full">Full</option>
+			  <option value="short">Short</option>
+			</select>
+		</div>
+		<button class="btn btn-primary" type="submit">Search</button>
+	</div>
+		
+
+	<div *ngIf="id">
+		<div class=form-grp>
+			<label>ID:</label>
+			<input type="text" name="title" ngModel  #id='ngModel'>
+			<span *ngIf="id.touched && !id.valid" style="color: red;">Please Enter title</span>
+		</div>
+		<div class=form-grp>
+			<label>Plot:</label>
+			<select name="plot"
+			            ngModel
+			            #plot='ngModel'>
+			  <option value="" disabled="">select..</option>
+			  <option value="full">Full</option>
+			  <option value="short">Short</option>
+			</select>
+		</div>
+		<button class="btn btn-primary" type="submit">Search</button>
+	</div>
+	<div *ngIf="keyword">
+		<div class=form-grp>
+			<label>Enter a keyword:</label>
+			<input type="text" name="title" ngModel  #keyword='ngModel'>
+		</div>
+		<div class=form-grp>
+			<label>Year:</label>
+			<input type="text" name="year" ngModel #year='ngModel'>
+		</div>
+		<button class="btn btn-primary" type="submit">Search</button>
+
+		
+	</div>
+	
+	</form>
+</div>
+
+
+<div class="recent-search">
+<h4>Recent search</h4>
+<ul>
+	<li *ngFor="let rs of recentSearch.reverse()"><a href="javascript:void(0)" (click)="SearchForRecent(rs)"> {{rs.title}}</a></li>
+	
+</ul>
+</div>
+
+
+  
+    
+  
+</div>

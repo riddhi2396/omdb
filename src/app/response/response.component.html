@@ -1,0 +1,81 @@
+<!-- <form #f="ngForm" (ngSubmit)="FindByPages(f.value.page)">
+    <input type="text" name="page" ngModel pattern="^(0|[1-9][0-9]*)$"
+    #page="ngModel"> /{{totalPages}}
+
+    <button class="btn btn-primary">Go</button>
+    <span *ngIf="!page.valid" style="color: red">Please Enter valid page number</span>
+
+</form> -->
+<div *ngIf="error"><h3>{{moviedetail.Error}}</h3></div>
+<div *ngIf="!message && !error">
+<table class="table" align="center">
+  <tbody>
+    <tr>
+    	<td><img height="230px" src="{{moviedetail?.Poster}}" alt="" title=""></td></tr>
+        <tr>
+    	<td>
+    		<b>Title:</b><span style="padding-left: 15px">{{moviedetail?.Title}}</span><br>
+    		<b>Type:</b><span style="padding-left: 15px">{{moviedetail?.Type}}</span><br>
+    		<b>Year:</b><span style="padding-left: 15px">{{moviedetail?.Year}}</span><br>
+    		<b>imdbID:</b><span style="padding-left: 15px">{{moviedetail?.imdbID}}</span><br>
+            <b>Actors:</b><span style="padding-left: 15px">{{moviedetail?.Actors}}</span><br>
+            <b>Awards:</b><span style="padding-left: 15px">{{moviedetail?.Awards}}</span><br>
+            <b>BoxOffice:</b><span style="padding-left: 15px">{{moviedetail?.BoxOffice}}</span><br>
+            <b>Country:</b><span style="padding-left: 15px">{{moviedetail?.Country}}</span><br>
+            <b>DVD:</b><span style="padding-left: 15px">{{moviedetail?.DVD}}</span><br>
+            <b>Director:</b><span style="padding-left: 15px">{{moviedetail?.Director}}</span><br>
+            <b>Genre:</b><span style="padding-left: 15px">{{moviedetail?.Genre}}</span><br>
+            <b>Language:</b><span style="padding-left: 15px">{{moviedetail?.Language}}</span><br>
+            <b>Metascore:</b><span style="padding-left: 15px">{{moviedetail?.Metascore}}</span><br>
+            <b>Plot:</b><span style="padding-left: 15px">{{moviedetail?.Plot}}</span><br>
+            <b>Production:</b><span style="padding-left: 15px">{{moviedetail?.Production}}</span><br>
+            <b>Rated:</b><span style="padding-left: 15px">{{moviedetail?.Rated}}</span><br>
+            <b>Released:</b><span style="padding-left: 15px">{{moviedetail?.Released}}</span><br>
+            <b>Response:</b><span style="padding-left: 15px">{{moviedetail?.Response}}</span><br>
+            <b>Runtime:</b><span style="padding-left: 15px">{{moviedetail?.Runtime}}</span><br>
+            <b>Website:</b><span style="padding-left: 15px">{{moviedetail?.Website}}</span><br>
+            <b>Writer:</b><span style="padding-left: 15px">{{moviedetail?.Writer}}</span><br>
+            <b>imdbRating:</b><span style="padding-left: 15px">{{moviedetail?.imdbRating}}</span><br>
+            <b>imdbVotes:</b><span style="padding-left: 15px">{{moviedetail?.imdbVotes}}</span><br>
+            <b>Awards:</b><span style="padding-left: 15px">{{moviedetail?.Awards}}</span><br>
+    	</td>
+    </tr>
+    <tr *ngFor="let rate of moviedetail?.Ratings">
+        <td>
+        <b>Source:</b><span style="padding-left: 15px">{{rate.Source}}</span><br>
+        <b>Value:</b><span style="padding-left: 15px">{{rate.Value}}</span><br>
+    </td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div *ngIf="message && !error">
+    
+<ul class="img-sec">
+    <li *ngFor="let movie of movieDetailArray">
+        <img height="230px" src="{{movie?.Poster}}" alt="" title="">
+        <p><span>Title:</span> {{movie?.Title}}</p>
+        <p><span>Type:</span> {{movie?.Type}}</p>
+        <p><span>Year:</span> {{movie?.Year}}</p>
+        <p><span>ImdbID:</span> {{movie?.imdbID}}</p>
+    </li>
+</ul>
+    
+</div>
+<div *ngIf="total" class="pagination">
+  <a href="javascript:void(0)" (click)="FindByPages()">View more({{results-10}})</a>
+</div>
+  
+  
+  
+
+    	
+    	
+    	
+
+    
+    
+
+      
+	
+  
