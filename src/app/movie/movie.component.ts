@@ -27,7 +27,7 @@ export class MovieComponent implements OnInit {
     
     
     if(submitted){  
-    if(this.title){
+      if(this.title){
     
       this.titleUrl = "t="+ form.title;
       if(form.year != ""){
@@ -93,9 +93,7 @@ export class MovieComponent implements OnInit {
     this.router.navigate(['/response', form.url]);
 
   }
-  trackByFn(index: any, item: any) {
-   return index;
-}
+
 
 }
       

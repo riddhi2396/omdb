@@ -74,13 +74,13 @@
 <div class="recent-search">
 <h4>Recent search</h4>
 <ul>
-	<li *ngFor="let rs of recentSearch.reverse()" trackBy:trackByFn><a href="javascript:void(0)" (click)="SearchForRecent(rs)"> {{rs.title}}</a></li>
+	<li *ngFor="let rs of recentSearch"><a href="javascript:void(0)" (click)="SearchForRecent(rs)"> {{rs.title}}</a></li>
 	
 </ul>
+</div>
 </div>
 
 
   
     
   
-</div>
