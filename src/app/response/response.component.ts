@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-response',
   templateUrl: './response.component.html',
@@ -28,18 +27,14 @@ export class ResponseComponent implements OnInit {
     this.error = false;
     this.currentPage = 1;
   	this.route.params.subscribe(params => {
-     
       this.title=(params['title']);
-      console.log(this.title);
     });
   	this._movieservice.getmovie(this.title)
   		.subscribe((res) => {
         if(res.Response === "False"){
           this.error = true;
           this.moviedetail = res;
-          console.log(this.moviedetail);
         }
-  			console.log(res);
         if(res.Search){
           this.movieDetailArray = res.Search;
           this.message = true;
@@ -51,38 +46,26 @@ export class ResponseComponent implements OnInit {
         else{
           this.moviedetail = res;
         }
-        console.log(this.message);
   		});
-  	
   }
+        
   FindByPages(){
-    console.log(this.router.url);
     let url = this.router.url;
-    if(this.total){
-      this.results = this.results - 10;
-      if(this.results - 10< 0){
-        this.total = false;
-      }
-      let newUrl = "";
-      this.count++;
-      newUrl= this.title + "&page=" + this.count
-      console.log(newUrl);
-      this._movieservice.getmovie(newUrl)
-       .subscribe((res) => {
-         this.movieDetailArray = res.Search;
-
-       });
+     if(this.total){
+       this.results = this.results - 10;
+       if(this.results - 10< 0){
+         this.total = false;
+        }
+        let newUrl = "";
+        this.count++;
+        newUrl= this.title + "&page=" + this.count
       
-    }
-        
-        
+        this._movieservice.getmovie(newUrl)
+         .subscribe((res) => {
+           this.movieDetailArray = res.Search;
+          });
+      }
+  }
+}
 
     
-
-      
-
-
-
-  }
-
-}
