@@ -93,6 +93,11 @@ export class MovieComponent implements OnInit {
     this.router.navigate(['/response', form.url]);
 
   }
+  trackByFn(index: any, item: any) {
+   return index;
+}
+
+}
       
       
 
@@ -106,8 +111,6 @@ export class MovieComponent implements OnInit {
       
 
 
-
-}
     
     
     
